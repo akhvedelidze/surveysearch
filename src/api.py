@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from pathlib import Path
 sys.path.append(str(Path(__file__).parent))
 
-from src.newsresearch.crew import Newsresearch
+from newsresearch.crew import Newsresearch
 
 # If the module path still causes issues, uncomment the following line:
 # sys.path.append(os.path.dirname(os.path.abspath(__file__)))
