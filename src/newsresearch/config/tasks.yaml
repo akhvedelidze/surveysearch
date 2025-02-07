@@ -1,0 +1,42 @@
+research_task:
+  description: >
+    Conduct a thorough research about a question: {topic} in {country}.
+    Focus on finding authoritative information about border management, law enforcement, 
+    national policies, and legal frameworks. Ensure your findings are concise, accurate, and 
+    properly cited from trusted sources.
+  expected_output: >
+    A comprehensive list of 10-15 bullet points summarizing the most relevant information about {topic} 
+    in {country}. Each bullet point should include:
+      - A summary of the information.
+      - The source (e.g., law title, report name, or URL).
+  agent: researcher
+
+reporting_task:
+  description: >
+    Review the research findings about a question: {topic} in {country} and create a detailed report.
+    Expand each bullet point into a full section of the report, providing:
+      - An answer to the question: {topic} in {country}.
+      - Detailed explanations and context.
+      - Headers for each major topic.
+      - Proper citations for all data, including legal articles, official reports, and trusted sources.
+      - Bullet points for specific details and key insights.
+    Ensure the report is well-structured and formatted in Markdown without '```'.
+  expected_output: >
+    A comprehensive and structured Markdown report with:
+      - An introduction.
+      - Sections with headings based on key points.
+      - Detailed analysis of each section.
+      - Bullet points for specific details.
+      - A conclusion summarizing the findings and their implications.
+      - Proper citations and links to sources.
+  agent: reporting_analyst
+
+answer_question_task:
+  description: >
+    Based on the information collected and analyzed in the previous tasks, provide an answer to the question: {topic} 
+    for {country}. The answer should be "Yes", "No", or "Information not available". Include a clear and concise 
+    justification for the answer, referencing the findings and sources from the research and analysis.
+  expected_output: >
+    - Answer: "Yes", "No", or "Information not available".
+    - Justification: A concise explanation based on the research findings, with references to key points and sources.
+  agent: answer_question

@@ -1,0 +1,1 @@
+Information not available. The context provided does not include any findings or information specifically addressing the use of AI in healthcare within the USA. Therefore, I cannot provide a definitive answer regarding whether AI is employed in this field based on the available data.
