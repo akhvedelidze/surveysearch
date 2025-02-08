@@ -1,14 +1,12 @@
 import os
 import sys
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from pathlib import Path
+
 sys.path.append(str(Path(__file__).parent))
-
 from newsresearch.crew import Newsresearch
-
-# If the module path still causes issues, uncomment the following line:
-# sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 app = FastAPI()
 
@@ -27,7 +25,13 @@ def generate_report(request: ReportRequest):
     # Kick off the CrewAI process
     Newsresearch().crew().kickoff(inputs=inputs)
 
-    return {
-        "message": f"Report generation for topic '{request.topic}' in '{request.country}' started successfully."
-    }
+    # Define the report file path
+    report_filename = f"{request.country}_report.md"
+    report_path = os.path.join(os.getcwd(), report_filename)
 
+    # Check if the file was generated
+    if not os.path.exists(report_path):
+        raise HTTPException(status_code=500, detail=f"Report {report_filename} not found after generation.")
+
+    # Return the file as a downloadable response
+    return FileResponse(report_path, media_type="text/markdown", filename=report_filename)

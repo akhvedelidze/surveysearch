@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).parent.parent.parent))
 import warnings
 
 from newsresearch.crew import Newsresearch
@@ -18,7 +20,7 @@ def run():
     
     
     inputs = {
-        'topic': 'In the State, have steps been taken to monitor and prevent acts of torture and cruel, inhuman and degrading treatment or punishment ?',
+        'topic': 'what it interpol activity',
         'country': 'benin'
     }
     
